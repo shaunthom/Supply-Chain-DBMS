@@ -2,9 +2,11 @@
 
 ## Before Normalization:
 
-![image](https://github.com/shaunthom/Supply-Chain-DBMS/assets/134566032/e50e4b8d-2d2b-426f-a774-fc2700189129)
+![resized_288303728-e50e4b8d-2d2b-426f-a774-fc2700189129](https://github.com/shaunthom/Supply-Chain-DBMS/assets/134566032/0a403791-c8ad-48d2-a3cc-ab2432282bfe)
+
 
 
 ## Normalization:
 
-![EER Diagram (1)](https://github.com/shaunthom/Supply-Chain-DBMS/assets/134566032/5d4c506c-56c0-488b-9acd-501d79c89085)
+
+![norm](https://github.com/shaunthom/Supply-Chain-DBMS/assets/134566032/b3109284-7011-4683-ad7e-5d05c0c994d3)
