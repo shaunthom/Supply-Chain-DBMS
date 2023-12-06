@@ -2,7 +2,8 @@
 
 ## Before Normalization:
 
-![resized_288303728-e50e4b8d-2d2b-426f-a774-fc2700189129](https://github.com/shaunthom/Supply-Chain-DBMS/assets/134566032/0a403791-c8ad-48d2-a3cc-ab2432282bfe)
+![288303728-e50e4b8d-2d2b-426f-a774-fc2700189129](https://github.com/shaunthom/Supply-Chain-DBMS/assets/134566032/1d203412-505e-460b-b093-abf87b101712)
+
 
 
 
