@@ -11,7 +11,33 @@ In any Database project, analyzing metadata is the first step. That is exactly w
 
 ![image](https://github.com/shaunthom/Supply-Chain-DBMS/assets/134566032/b1ba3266-5e14-4b9e-84c0-38af28d19e78)
 
+### Database Relationship Rules (or Business Rules)
 
+###### Cluster 1: Product-Line Relationships
+
+Rule 1: Each product is produced by one specific production line, forming a one-to-one relationship from 'Product' to 'Production Line'.
+
+Rule 2: Each production line produces only one type of product, reinforcing a one-to-one relationship from 'Production Line' to 'Product'.
+
+###### Cluster 2: Vendor-Material-Warehouse Relationships
+
+Rule 1: Vendors supply many raw materials to various warehouses, establishing one-to-many relationships between vendors, raw materials, and warehouses.
+
+Rule 2: Multiple warehouses can be supplied by multiple vendors, indicating many-to-many relationships.
+
+###### Cluster 3: Operational Unit-Employee Relationships
+
+Rule 1: The company comprises departments, warehouses, and production lines.
+
+Rule 2: Multiple employees are associated with each department, warehouse, or production line, suggesting many-to-one relationships.
+
+Rule 3: Designers (employees) can design multiple products, indicating a one-to-many relationship between designers and products.
+
+###### Cluster 4: Vendor-Invoice Procedures
+
+Rule 1: Vendors issue invoices for supplying raw materials, standardizing transaction procedures.
+
+Rule 2: The accounting department processes these invoices, assigning them responsibility for invoice management.
 
 ### Before Normalization:
 
