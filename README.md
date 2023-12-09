@@ -108,24 +108,43 @@ This SQL query gathers and categorizes data from invoices, vendors, and departme
 """
 SELECT
     I.InvoiceNumber,
+    
     V.VendorName,
+    
     D.DepartmentName,
+    
     CASE
+    
         WHEN I.TotalAmount > 10000 THEN 'High Value Invoice'
+        
         WHEN I.TotalAmount BETWEEN 5000 AND 10000 THEN 'Medium Value Invoice'
+        
         WHEN I.TotalAmount < 5000 THEN 'Low Value Invoice'
+        
         ELSE 'Other'
+        
     END AS InvoiceCategory,
+    
     CASE
         WHEN V.VendorPaymentType = 'Credit' THEN 'Credit Payment'
+        
         WHEN V.VendorPaymentType = 'Cash' THEN 'Cash Payment'
+        
         ELSE 'Other Payment Type'
+        
     END AS PaymentType
+    
 FROM
+
     Invoice I
+    
 JOIN
+
     Vendor V ON I.VendorNumber = V.VendorNumber
+    
 JOIN
+
     Department D ON I.DepartmentID = D.DepartmentID;
+    
 """
 
