@@ -2,6 +2,14 @@
 
 ### Project Overview
 
+Welcome to my detailed database project documentation, which focuses on a system designed for handling inventory and resource management in supply chains. My database development began with analyzing metadata, followed by designing clusters and establishing their interrelations based on business rules. I finally created a comprehensive ER diagram by integrating these clusters. Of course, I identified primary keys and foreign keys before drawing the final ER model diagram!
+
+### Metadata
+
+In any Database project, analyzing metadata is the first step. That is exactly what I have done here. A single metadata table is given below. For more explanation, go to Folder titled "Metadata" in this repository.
+
+[MetaData_Department.pdf](https://github.com/shaunthom/Supply-Chain-DBMS/files/13625631/MetaData_Department.pdf)
+
 
 ### Before Normalization:
 
