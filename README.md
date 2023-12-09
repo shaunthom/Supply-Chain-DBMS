@@ -66,7 +66,66 @@ Product Table: The Product Number serves as the primary key, similar to an indiv
 Consumption Table: This table uses a composite primary key comprising the Product Number and Raw Material ID. The Product Number is a foreign key from the Product Table, and the Raw Material ID is a foreign key from the Raw Material Table. This composite key is essential for tracking the use of various raw materials in the same product.
 
 
-### Normalization:
+### Checking for Dependencies and Normalization:
 
+My ER model has been designed, but I identified some dependency issues in my database. I noticed partial dependency in the relationship between ProductNumber, RawMaterialName, and LineNumber, where LineNumber depends only on ProductNumber. Additionally, a transitive dependency was found in the Invoice table, with VendorPaymentType depending on VendorNumber, which in turn depended on InvoiceNumber, leading to potential data update inefficiencies.
+
+To address these, I created a new table named Product and Product Line, containing ProductNumber and LineNumber, clarifying their relationship. We removed LineNumber from the original table, redefining its primary key to include only ProductNumber and RawMaterialName, thus eliminating partial dependency. Another table, Product and Raw Material, lists available raw materials for each product.
+
+For the transitive dependency, I separated the data into two tables: Invoice (tracking invoice numbers and vendor numbers) and Vendor (including VendorPaymentType). This change directly links vendors with their payment types, independent of invoices, and updates the existing Vendor Table to include this new attribute, removing the transitive dependency. My final normalized ER Model diagram reflects these changes:
 
 ![norm](https://github.com/shaunthom/Supply-Chain-DBMS/assets/134566032/b3109284-7011-4683-ad7e-5d05c0c994d3)
+
+
+## SQL Queries - Outputs:
+
+
+I loaded all the data into the tables in Oracle Apex Database. For instance, the Invoice Table is shown below:
+
+
+
+![image](https://github.com/shaunthom/Supply-Chain-DBMS/assets/134566032/c0157f1a-8ad4-4601-9463-e0ab9c4fdd71)
+
+![image](https://github.com/shaunthom/Supply-Chain-DBMS/assets/134566032/a1eadd7b-1d79-4d5f-9e34-18d3a44eb2de)
+
+![image](https://github.com/shaunthom/Supply-Chain-DBMS/assets/134566032/97542cc9-44ff-4c5a-9aa8-9919690f95dc)
+
+![image](https://github.com/shaunthom/Supply-Chain-DBMS/assets/134566032/955ac59a-d54f-4610-a220-1e88b3607fc2)
+
+
+In conclusion, my project successfully developed an efficient database for supply chain management. I overcame challenges in data organization by applying normalization & creating a clear and functional system. I also got the opportunity to do some JOIN operations and CASE Statements on SQL. It is given below in a different section.
+
+### Additional Operations!
+
+This SQL query calculates the number of employees from a department who are linked to the design of a specific product, the 'Galaxy United Jersey'. It does this by joining two tables: 'Product' and 'Department_Employee', based on a common field, 'DesignerID' in 'Product' and 'Department ID' in 'Department_Employee'. Only those rows where the product is 'Galaxy United Jersey' are considered for the count.
+
+
+![image](https://github.com/shaunthom/Supply-Chain-DBMS/assets/134566032/3cd7d121-7ff6-4c84-bdfe-bd721f90117b)
+
+
+This SQL query gathers and categorizes data from invoices, vendors, and departments. It selects invoice numbers, vendor names, and department names, then classifies invoices by their total amount (as high, medium, or low value) and payment types (like credit or cash). It joins data from the Invoice, Vendor, and Department tables based on shared identifiers.
+
+"""
+SELECT
+    I.InvoiceNumber,
+    V.VendorName,
+    D.DepartmentName,
+    CASE
+        WHEN I.TotalAmount > 10000 THEN 'High Value Invoice'
+        WHEN I.TotalAmount BETWEEN 5000 AND 10000 THEN 'Medium Value Invoice'
+        WHEN I.TotalAmount < 5000 THEN 'Low Value Invoice'
+        ELSE 'Other'
+    END AS InvoiceCategory,
+    CASE
+        WHEN V.VendorPaymentType = 'Credit' THEN 'Credit Payment'
+        WHEN V.VendorPaymentType = 'Cash' THEN 'Cash Payment'
+        ELSE 'Other Payment Type'
+    END AS PaymentType
+FROM
+    Invoice I
+JOIN
+    Vendor V ON I.VendorNumber = V.VendorNumber
+JOIN
+    Department D ON I.DepartmentID = D.DepartmentID;
+"""
+
