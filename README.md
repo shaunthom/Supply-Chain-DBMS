@@ -8,12 +8,6 @@ Welcome to my detailed database project documentation, which focuses on a system
 
 In any Database project, analyzing metadata is the first step. That is exactly what I have done here. A single metadata table is given below. For more explanation, go to Folder titled "Metadata" in this repository.
 
-Name	              Type	         Length 	Min	 Max        	Description
-DepartmentID	    Alphanumeric	     4			              Unique identifier
-DepartmentName	  Text	           Varies			            Name of department
-Location         	Alphanumeric	   Varies			            Physical location
-NumberOfEmployees	Integer	           1	     2 	  4	      Total number of employees
-PhoneNumber	       Alphanumeric   	14		              	Contact phone number
 
 ![image](https://github.com/shaunthom/Supply-Chain-DBMS/assets/134566032/b1ba3266-5e14-4b9e-84c0-38af28d19e78)
 
