@@ -2,7 +2,21 @@
 
 ### Project Overview
 
-Welcome to my detailed database project documentation, which focuses on a system designed for handling inventory and resource management in supply chains. My database development began with analyzing metadata, followed by designing clusters and establishing their interrelations based on business rules. I finally created a comprehensive ER diagram by integrating these clusters. Of course, I identified primary keys and foreign keys before drawing the final ER model diagram!
+Welcome to my detailed database project documentation, which focuses on a system designed for handling inventory and resource management in supply chains. 
+
+### Methodology:
+
+Given below is a concise methdology for this project:
+
+1. Metadata Analysis: This step involves gathering and examining data from various sources within the supply chain. I focus on understanding the data types, allowable values, and other constraints of this data, identifying key fields essential for managing inventory and resources.
+
+2. Cluster Design: Based on my metadata analysis, I group the related data fields into clusters. Each cluster represents a logical grouping of data, such as products, suppliers, or transactions.
+
+3. Defining Interrelations: I then establish how these clusters relate to each other according to business rules. This involves determining relationships like which products are supplied by which suppliers, or how transactions affect inventory levels.
+
+4. ER Diagram Creation: The final step is integrating these clusters and their interrelations into a comprehensive Entity-Relationship (ER) diagram. This diagram serves as a blueprint of my database, visually representing the data structure and how different entities are connected.
+
+5. Normalization: I identify the different dependencies present in my database and seek to eliminate them. In this process, I create a new final ER model diagram using which I will implement the database.
 
 ### Metadata
 
