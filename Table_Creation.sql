@@ -49,7 +49,7 @@ CREATE TABLE Invoice (
 
 CREATE TABLE Employee(
     EmployeeID VARCHAR2(5),
-    FIRSTNAME VARCHAR2(15)
+    FIRSTNAME VARCHAR2(15),
     LASTNAME VARCHAR2(15),
     POSITION VARCHAR2(50),
     SALARY NUMBER,
@@ -61,31 +61,28 @@ CREATE TABLE Employee_Department (
     EmployeeID VARCHAR2(20),
     DepartmentID VARCHAR2(20),
     FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID),
-    FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID)
+    FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID),
+    PRIMARY KEY (EmployeeID, DepartmentID)
 );
+
 
 CREATE TABLE Employee_Warehouse (
     EmployeeID VARCHAR2(20),
     WarehouseNumber VARCHAR2(20),
     FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID),
-    FOREIGN KEY (WarehouseNumber) REFERENCES Warehouse(WarehouseNumber)
+    FOREIGN KEY (WarehouseNumber) REFERENCES Warehouse(WarehouseNumber),
+    PRIMARY KEY (EmployeeID, WarehouseNumber)
 );
+
 
 CREATE TABLE Employee_ProductionLine (
     EmployeeID VARCHAR2(20),
     LineNumber VARCHAR2(20),
     FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID),
-    FOREIGN KEY (LineNumber) REFERENCES ProductionLine(LineNumber)
+    FOREIGN KEY (LineNumber) REFERENCES ProductionLine(LineNumber),
+    PRIMARY KEY (EmployeeID, LineNumber)
 );
 
-ALTER TABLE Employee_Department
-ADD CONSTRAINT Employee_Department_pk PRIMARY KEY (EmployeeID);
-
-ALTER TABLE Employee_ProductionLine
-ADD CONSTRAINT ProductionLine_pk PRIMARY KEY (EmployeeID);
-
-ALTER TABLE Employee_Warehouse
-ADD CONSTRAINT Employee_Warehouse_pk PRIMARY KEY (EmployeeID);
 
 CREATE TABLE Product (
     ProductNumber VARCHAR2(20),
@@ -97,7 +94,7 @@ CREATE TABLE Product (
     Color VARCHAR2(20),
     Weight_lbs NUMBER,
     PRIMARY KEY (ProductNumber),
-    FOREIGN KEY (DesignerID) REFERENCES Employee_Department(EmployeeID)
+    FOREIGN KEY (DesignerID) REFERENCES Employee(EmployeeID)
 );
 
 CREATE TABLE Rawmaterial1 (
@@ -105,6 +102,7 @@ CREATE TABLE Rawmaterial1 (
     RawmaterialName VARCHAR2(20),
     FOREIGN KEY (ProductNumber) REFERENCES Product(ProductNumber)
 );
+
 ALTER TABLE Rawmaterial1
 ADD CONSTRAINT Rawmaterial1_pk PRIMARY KEY (ProductNumber, RawmaterialName);
 
@@ -115,6 +113,7 @@ CREATE TABLE Rawmaterial2 (
     FOREIGN KEY (ProductNumber) REFERENCES Product(ProductNumber),
     FOREIGN KEY (LineNumber) REFERENCES ProductionLine(LineNumber)
 );
+
 ALTER TABLE Rawmaterial2
 ADD CONSTRAINT Rawmaterial2_pk PRIMARY KEY (ProductNumber, LineNumber);
 
@@ -125,7 +124,7 @@ CREATE TABLE SupplySchedule (
     RawmaterialName VARCHAR2(100),
     WarehouseNumber VARCHAR2(20),
     VendorNumber VARCHAR2(20),
-    Dat DATE,
+    Date DATE,
     FOREIGN KEY (ProductNumber, RawmaterialName) REFERENCES RawMaterial1(ProductNumber,RawMaterialName),
     FOREIGN KEY (WarehouseNumber) REFERENCES Warehouse(WarehouseNumber),
     FOREIGN KEY (VendorNumber) REFERENCES Vendor(VendorNumber)
